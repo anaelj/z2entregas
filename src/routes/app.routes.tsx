@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Dashboard } from '../screens/Dashboard';
 import { Register } from '../screens/Register';
 import { Resume } from '../screens/Resume';
+import { Collect } from '../screens/Collect';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -56,6 +57,19 @@ export function AppRoutes(){
       <Screen
         name="Coletar"
         component={Resume}
+        options={{
+          tabBarIcon: (({ size, color }) => (
+            <MaterialIcons
+              name="map"
+              size={size}
+              color={color}
+            />
+          ))
+        }}
+      />
+      <Screen
+        name="Coleta"
+        component={Collect}
         options={{
           tabBarIcon: (({ size, color }) => (
             <MaterialIcons

@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Modal, TouchableWithoutFeedback, Keyboard, Alert } from "react-native";
+import {
+  Modal,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  ScrollView,
+} from "react-native";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -98,66 +107,71 @@ export function Register() {
   }
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <Container>
-        <Header>
-          <Title>Cadastro</Title>
-        </Header>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container1}
+    >
+      <ScrollView>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <Container>
+            <Header>
+              <Title>Cadastro</Title>
+            </Header>
 
-        <Form>
-          <Fields>
-            <InputForm
-              name="name"
-              control={control}
-              placeholder="Nome"
-              autoCapitalize="sentences"
-              autoCorrect={false}
-              error={errors.name && errors.name.message}
-            />
+            <Form>
+              <Fields>
+                <InputForm
+                  name="name"
+                  control={control}
+                  placeholder="Nome"
+                  autoCapitalize="sentences"
+                  autoCorrect={false}
+                  error={errors.name && errors.name.message}
+                />
 
-            <InputForm
-              name="cpf"
-              control={control}
-              placeholder="CPF"
-              autoCorrect={false}
-              keyboardType="numeric"
-              error={errors.cpf && errors.cpf.message}
-            />
-            <InputForm
-              name="email"
-              control={control}
-              placeholder="E-mail"
-              autoCorrect={false}
-              keyboardType="email-address"
-              error={errors.email && errors.email.message}
-            />
+                <InputForm
+                  name="cpf"
+                  control={control}
+                  placeholder="CPF"
+                  autoCorrect={false}
+                  keyboardType="numeric"
+                  error={errors.cpf && errors.cpf.message}
+                />
+                <InputForm
+                  name="email"
+                  control={control}
+                  placeholder="E-mail"
+                  autoCorrect={false}
+                  keyboardType="email-address"
+                  error={errors.email && errors.email.message}
+                />
 
-            <InputForm
-              name="telefone"
-              control={control}
-              placeholder="Número Celular"
-              autoCorrect={false}
-              error={errors.telefone && errors.telefone.message}
-            />
+                <InputForm
+                  name="telefone"
+                  control={control}
+                  placeholder="Número Celular"
+                  autoCorrect={false}
+                  error={errors.telefone && errors.telefone.message}
+                />
 
-            <InputForm
-              name="cidade"
-              control={control}
-              placeholder="Cidade"
-              autoCapitalize="sentences"
-              autoCorrect={false}
-              error={errors.cidade && errors.cidade.message}
-            />
-            <InputForm
-              name="endereco"
-              control={control}
-              placeholder="Endereco"
-              autoCapitalize="sentences"
-              autoCorrect={false}
-              error={errors.endereco && errors.endereco.message}
-            />
+                <InputForm
+                  name="cidade"
+                  control={control}
+                  placeholder="Cidade"
+                  autoCapitalize="sentences"
+                  autoCorrect={false}
+                  error={errors.cidade && errors.cidade.message}
+                />
+                <InputForm
+                  name="endereco"
+                  control={control}
+                  placeholder="Endereco"
+                  autoCapitalize="sentences"
+                  autoCorrect={false}
+                  error={errors.endereco && errors.endereco.message}
+                />
 
-            {/* <TransactionsTypes>
+                {/* <TransactionsTypes>
               <TransactionTypeButton
                 type="up"
                 title="Income"
@@ -172,23 +186,31 @@ export function Register() {
               />
             </TransactionsTypes>
  */}
-            {/* <CategorySelectButton
+                {/* <CategorySelectButton
               title={category.name}
               onPress={handleOpenSelectCategoryModal}
             /> */}
-          </Fields>
+              </Fields>
 
-          <Button title="Enviar" onPress={handleSubmit(handleRegister)} />
-        </Form>
+              <Button title="Enviar" onPress={handleSubmit(handleRegister)} />
+            </Form>
 
-        {/* <Modal visible={categoryModalOpen}>
+            {/* <Modal visible={categoryModalOpen}>
           <CategorySelect
-            category={category}
-            setCategory={setCategory}
-            closeSelectCategory={handleCloseSelectCategoryModal}
+          category={category}
+          setCategory={setCategory}
+          closeSelectCategory={handleCloseSelectCategoryModal}
           />
         </Modal> */}
-      </Container>
-    </TouchableWithoutFeedback>
+          </Container>
+        </TouchableWithoutFeedback>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
+
+const styles = StyleSheet.create({
+  container1: {
+    flex: 1,
+  },
+});
