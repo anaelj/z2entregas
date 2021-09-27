@@ -1,0 +1,13 @@
+{
+  "name": "z2",
+  "displayName": "z2",
+  "expo": {
+    "name": "z2",
+    "slug": "z2",
+    "scheme": "z2",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
